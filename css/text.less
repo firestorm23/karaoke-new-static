@@ -1,0 +1,228 @@
+@import "mixins";
+
+.font-uppercase {
+	text-transform: uppercase;
+}
+
+.color-black {
+	color: #000;
+}
+
+.color-light-grey {
+	color: #ced6e1;
+}
+
+.color-dark-grey {
+	color: #666666;
+}
+
+.text-title {
+	font: 30px/36px @font;
+
+	&.with-border {
+		padding: 0 0 5px;
+		border-bottom: 1px solid #e6e6e6;
+	}
+
+	&.f21 {
+		font: 21px/24px @font;
+	}
+
+	&.f24 {
+		font: 24px/28px @font;
+	}
+
+	a {
+		color: #3399ff;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	.text-price {
+		margin: 0 6px;
+	}
+
+	.fa {
+		vertical-align: middle;
+	}
+}
+
+.text-name {
+	font: 18px/22px @font;
+
+	&.f12 {
+		font: 12px/12px @font;
+	}
+
+	&.f14 {
+		font: 14px/17px @font;
+	}
+
+	&.f15 {
+		font: 15px/18px @font;
+	}
+
+	&.f20 {
+		font: 20px/24px @font;
+	}
+
+	a {
+		color: #3399ff;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		.fa {
+			font-size: 13px;
+			vertical-align: middle;
+		}
+	}
+}
+
+.text-text {
+	color: #666666;
+	font: 14px/18px @font;
+}
+
+.text-list {
+	margin: 18px 0;
+	font: 15px/18px @font;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	ul {
+		li {
+			padding: 0 0 0 20px;
+			position: relative;
+
+			&:before {
+				width: 20px;
+				height: 18px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: #bcd6f0;
+				content: "–";
+			}
+		}
+	}
+}
+
+.text-price {
+	background: #ffe493;
+	padding: 5px 8px;
+	display: inline-block;
+	color: #4b545c;
+	font: bold 24px/30px @font;
+
+	.fa-rub {
+		font-size: 19px;
+	}
+}
+
+.text-type {
+	padding: 31px 0 31px 89px;
+	position: relative;
+	color: #ffffff;
+	font: 24px/28px @font;
+	text-transform: uppercase;
+
+	.span {
+		background: #3399ff;
+		padding: 1px 0 3px 10px;
+		position: relative;
+
+		&:before {
+			border: solid transparent;
+			border-width: 16px 0 16px 15px;
+			border-left-color: #3399ff;
+			position: absolute;
+			top: 0;
+			left: 100%;
+			content: "";
+		}
+	}
+
+	.fa {
+		width: 94px;
+		height: 94px;
+		border: 2px solid #3399ff;
+		border-radius: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: "";
+		line-height: 90px;
+	}
+}
+
+.text-arrow {
+	color: #84a0bc;
+	font: 18px/22px @font;
+	text-transform: uppercase;
+
+	.span {
+		background: #e8f3f6;
+		padding: 6px 10px 4px 14px;
+		position: relative;
+
+		&:before {
+			border: solid transparent;
+			border-width: 16px 0 16px 15px;
+			border-left-color: #e8f3f6;
+			position: absolute;
+			top: 0;
+			left: 100%;
+			content: "";
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
