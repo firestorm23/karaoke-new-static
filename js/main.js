@@ -167,3 +167,179 @@ function jpg_compare() {
         }
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* undefitied@gmail.com */
+$(document).ready(function() {
+    var win = $(window);
+
+    /* Item Grid Slider */
+    win.resize(function() {
+        var percentage = '25',
+            onPage = 4;
+
+        if (win.width() <= 1310 && win.width() > 580) {
+            percentage = '33';
+            onPage = 3;
+        } else if (win.width() <= 580) {
+            percentage = '100';
+            onPage = 1;
+        }
+
+        $('.item-slider').each(function() {
+            $(this).find('.uf-slider').uFslider({
+                width: percentage,
+                widthType: 'percentage',
+                widthPlus: '10',
+                onPage: onPage
+            });
+        });
+    });
+
+    /* Item Image */
+    $(document).on('click', '.item-image .link', function () {
+        if (!$(this).hasClass('active')) {
+            var par = $(this).closest('.item-image'),
+                mini = $(this).closest('.mini');
+            var src = $(this).attr('data-src') || $(this).attr('href') || $(this).find('img').attr('src');
+
+            mini.find('.link').removeClass('active');
+            $(this).addClass('active');
+
+            par.find('.main img').attr('src', src);
+        }
+        return false;
+    });
+
+    /* Item 2 Variant */
+    $(document).on('click', '.choose-block', function () {
+        if (!$(this).hasClass('active')) {
+            var par = $(this).closest('.choose-blocks');
+
+            par.find('.choose-block').removeClass('active');
+            $(this).addClass('active');
+        }
+
+        return false;
+    });
+
+    /* Form Validate */
+    if ($().validate) {
+        $('#form_example').validate({
+            rules: {
+                phone: {
+                    required: true
+                }
+            },
+            messages: {
+                phone: {
+                    required: "Телефон обязателен для заполнения"
+                }
+            }
+        });
+    }
+
+    /* Phone Input */
+    if ($().intlTelInput) {
+        $('.input-phone').each(function() {
+            $(this).intlTelInput({
+                geoIpLookup: function(callback) {
+                    $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+                        var countryCode = (resp && resp.country) ? resp.country : "";
+                        callback(countryCode);
+                    });
+                }
+            });
+        });
+    }
+
+    /* Remove File */
+    $(document).on('click', '.files-block .link-delete', function () {
+        $(this).closest('.files-block').slideUp(function() {
+            $(this).remove();
+        });
+        return false;
+    });
+
+    /* Magnific Popup */
+    if ($().magnificPopup) {
+        $('.portfolio_preview_cell').magnificPopup({type:'image'});
+    }
+
+    /* Window Triggers */
+    win.resize();
+    win.scroll();
+    win.load();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

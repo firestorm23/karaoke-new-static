@@ -1,3 +1,221 @@
+/*! uFslider - v1.0 - 2015-04-03
+ * http://www.works.undefitied.com
+ *
+ * Copyright (c) 2015 Sergey Undefitied <undefitied@gmail.com>;
+ * Licensed under the MIT license */
+
+;(function($) {
+    "use strict"
+
+    var defaults = {
+            perClick: 1,
+            margin: 0,
+            onPage: 1,
+            counter: 0
+        },
+        pluginName = 'uFslider';
+
+    function Plugin($container, options) {
+        this.options = $.extend({}, defaults, options);
+
+        var self = this,
+            counter = this.options.counter,
+            arrowTextNext,
+            arrowTextCurrent;
+
+        var $slides = this.options.slides || $container.find('.uf-slides'),
+            $slide = this.options.slide || $container.find('.uf-slide'),
+            $arrNext = this.options.arrNext ? this.options.arrNext : $container.find('.uf-arrow.next'),
+            $arrPrev = this.options.arrPrev ? this.options.arrPrev : $container.find('.uf-arrow.prev');
+
+
+        if (this.options.points && this.options.points.size() > 0) {
+            this.options.points.find('*').remove();
+            $slide.each(function() {
+                self.options.points.append('<button type="button" class="uf-point"></button>');
+            });
+        }
+        var $point =  this.options.point ? this.options.point : $container.find('.uf-point');
+
+        if ($arrNext.size() < 1) {
+            $arrNext = undefined;
+        }
+
+        if ($arrPrev.size() < 1) {
+            $arrPrev = undefined;
+        }
+
+        this.setCss = function() {
+            $slide.width(this.width);
+            $slides.width(this.width * this.size);
+            $slides.css({
+                'margin-left' : self.slideStep
+            });
+            // console.log('setCss');
+        };
+
+        this.update = function() {
+
+            this.size = $slide.size();
+            if (this.options.perClick) {
+                this.size = this.size/this.options.perClick;
+            }
+
+            this.width = $slide.outerWidth();
+            if (this.options.width) {
+
+                if (this.options.widthType  && this.options.widthType == 'percentage') {
+                    var percentage = (+this.options.width) / 100;
+                    $container.find('.uf-slides').width('auto');
+                    this.width = $container.find('.uf-slides').width() * percentage;
+                    console.log(this.width);
+                } else {
+                    switch (this.options.width) {
+                        case 'window':
+                            this.width = $(window).width();
+                            break;
+
+                        default:
+                            this.width = this.options.width;
+                            break;
+                    }
+                }
+
+            }
+
+            this.step = this.width * this.options.perClick;
+            this.margin = this.options.margin ? this.options.margin : 0;
+            this.slideStep = 0;
+
+            counter = this.options.counter;
+            if (this.options.pos == 'center') {
+                counter = Math.ceil(this.size / 2) - 1;
+            }
+
+            updateStep();
+            this.setCss();
+            slide();
+
+            // console.log(self, this.options);
+            // console.log('update');
+        };
+
+        this.initialize = function() {
+            this.update();
+            return self;
+        }
+
+        function slide(_this) {
+            $slides.animate({
+                marginLeft : self.slideStep
+            });
+
+            if($point) {
+                updatePoint();
+            }
+
+            if (_this) {
+                if ($(_this).hasClass('how-next')) {
+                    if (counter < self.size - 1) {
+                        arrowTextNext = $slide.eq(counter + 1).attr('data-title');
+                    } else {
+                        arrowTextNext = $slide.eq(0).attr('data-title');
+                    }
+                    $(_this).find('.for-text').text(arrowTextNext);
+                    $container.find('.for-title').text(arrowTextCurrent);
+                }
+            }
+        }
+
+        function updatePoint() {
+            $point.removeClass('uf-active');
+            $point.eq(counter).addClass('uf-active');
+        }
+
+        function updateCounter(direction) {
+            // console.log('counter',counter);
+            var counterMin = 0;
+            if (self.options.pos == 'center') {
+                counterMin = 1;
+            }
+            var counterMax = self.size - Math.ceil(self.options.onPage / self.options.perClick);
+            if (self.options.pos == 'center') {
+                counterMax++;
+            }
+
+            if (direction == 'prev') {
+                if(counter != counterMin) {
+                    counter--;
+                } else {
+                    counter = counterMax;
+                }
+            } else if (direction == 'next') {
+                if(counter < counterMax) {
+                    counter++;
+                    arrowTextCurrent = $slide.eq(counter).attr('data-title');
+                } else {
+                    counter = counterMin;
+                    arrowTextCurrent = $slide.eq(counter).attr('data-title');
+                }
+            }
+
+            updateStep();
+
+            // console.log('counter',counter, Math.ceil(self.options.onPage / self.options.perClick));
+            return counter;
+        }
+
+        function updateStep() {
+            self.slideStep = -counter * self.step;
+            if (self.options.pos == 'center') {
+                self.slideStep = self.slideStep + self.width / 2 + self.margin * 2;
+            }
+        }
+
+        if ($arrNext) {
+            $arrNext.unbind('click').click(function() {
+                updateCounter('next');
+                slide(this);
+                return false;
+            });
+        }
+        if ($arrPrev) {
+            $arrPrev.unbind('click').click(function() {
+                updateCounter('prev');
+                slide();
+                return false;
+            });
+        }
+        if ($point) {
+            $point.unbind('click').click(function() {
+                counter = $point.index($(this));
+                updateStep();
+                slide();
+                return false;
+            });
+        }
+
+        if (this.options.resize) {
+            $(window).resize(function() {
+                self.update();
+            });
+        }
+
+        this.initialize();
+        // console.log('first');
+    }
+
+    $.fn[pluginName] = function(options) {
+        return this.each(function() {
+            if ($.data(this, 'plugin_' + pluginName)) {
+                $.data(this, 'plugin_' + pluginName, undefined);
+            }
+            $.data(this, 'plugin_' + pluginName, new Plugin($(this), options));
+        });
+    };
+
+})(jQuery);
+
 // Avoid `console` errors in browsers that lack a console.
 (function() {
     var method;

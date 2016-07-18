@@ -12,6 +12,10 @@
 	color: #ced6e1;
 }
 
+.color-grey {
+	color: #b8b8b8;
+}
+
 .color-dark-grey {
 	color: #666666;
 }
@@ -69,6 +73,22 @@
 		font: 20px/24px @font;
 	}
 
+	&.f24 {
+		font: 24px/28px @font;
+
+		.fa {
+			font-size: 22px;
+		}
+	}
+
+	&.f27 {
+		font: 27px/32px @font;
+	}
+
+	&.f30 {
+		font: 30px/34px @font;
+	}
+
 	a {
 		color: #3399ff;
 		text-decoration: underline;
@@ -76,11 +96,11 @@
 		&:hover {
 			text-decoration: none;
 		}
+	}
 
-		.fa {
-			font-size: 13px;
-			vertical-align: middle;
-		}
+	.fa {
+		font-size: 13px;
+		vertical-align: middle;
 	}
 }
 
@@ -103,8 +123,13 @@
 
 	ul {
 		li {
+			margin: 6px 0 0;
 			padding: 0 0 0 20px;
 			position: relative;
+
+			&:first-child {
+				margin-top: 0;
+			}
 
 			&:before {
 				width: 20px;
@@ -125,6 +150,20 @@
 	display: inline-block;
 	color: #4b545c;
 	font: bold 24px/30px @font;
+
+	&.red {
+		background: #ff1617;
+		color: #fff;
+	}
+
+	&.small {
+		padding: 5px;
+		font: bold 18px/20px @font;
+
+		.fa-rub {
+			font-size: 15px;
+		}
+	}
 
 	.fa-rub {
 		font-size: 19px;
@@ -189,19 +228,207 @@
 	}
 }
 
+.text-stock {
+	background: #42cc04;
+	padding: 0 3px;
+	display: inline-block;
+	vertical-align: top;
+	color: #ffffff;
+	font: 14px/13px @font;
+}
 
+.text-link {
+	padding: 0 13px 0 0;
+	position: relative;
+	color: #3399ff;
+	font: 12px/14px @font;
+	text-decoration: underline;
 
+	&:hover {
+		text-decoration: none;
+	}
 
+	&:before {
+		width: 10px;
+		height: 10px;
+		.icons(0, -590px);
+		position: absolute;
+		top: 2px;
+		right: 0;
+		content: "";
+	}
+}
 
+.text-price-for {
+	color: #4b545c;
+	font: 11px/20px @font;
 
+	&.old {
+		.num {
+			color: #666666;
+			text-decoration: line-through;
+		}
+	}
 
+	.num {
+		margin: 0 0 0 3px;
+		font: 18px/20px @font;
+		vertical-align: middle;
 
+		.fa {
+			font-size: 16px;
+		}
+	}
 
+	.text-price {
+		margin: 0 0 0 4px;
+		vertical-align: middle;
+	}
+}
 
+.text-percent {
+	padding: 5px 0 7px 30px;
+	position: relative;
+	color: #a0a0a0;
+	font: 10px/12px @font;
 
+	&:before {
+		width: 22px;
+		height: 22px;
+		background: #d6d6d6;
+		border-radius: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: #fff;
+		font: 18px/22px @font;
+		text-align: center;
+		content: "%";
+	}
+}
 
+.text-icon {
+	padding: 0 0 0 40px;
+	position: relative;
+	color: #666666;
+	font: 11px/14px @font;
 
+	&:before, &:after {
+		width: 35px;
+		height: 34px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		content: "";
+	}
 
+	&:after {
+		background: linear-gradient(#dddddd, #9e9e9e);
+		border-radius: 3px;
+		z-index: 1;
+	}
+
+	&.i1 {
+		&:before {
+			.icons(6px, -625px);
+		}
+	}
+
+	&.i2 {
+		&:before {
+			.icons(10px, -676px);
+		}
+	}
+
+	&.i3 {
+		&:before {
+			.icons(7px, -727px);
+		}
+	}
+
+	&.i4 {
+		&:before {
+			.icons(5px, -775px);
+		}
+	}
+
+	.name {
+		margin: 0 0 3px;
+		color: #a5a5a5;
+		font: 14px/16px @font;
+		text-transform: uppercase;
+	}
+}
+
+.text-music {
+	background: #3399ff;
+	padding: 0 6px 0 25px;
+	position: relative;
+	display: inline-block;
+	color: #fff;
+	line-height: 30px;
+	text-align: left;
+
+	&:before {
+		width: 18px;
+		height: 19px;
+		margin: -9px 0 0;
+		.icons(0, -1239px);
+		position: absolute;
+		top: 50%;
+		left: 0;
+		content: "";
+	}
+
+	&:after {
+		border: 15px solid transparent;
+		border-right-color: #3399ff;
+		position: absolute;
+		top: 0;
+		right: 100%;
+		content: "";
+	}
+
+	.align {
+		font: 14px/11px 'Trebuchet MS', sans-serif;
+	}
+
+	.num {
+		font-size: 18px;
+	}
+}
+
+.text-important {
+	min-height: 70px;
+	padding: 9px 0 9px 60px;
+	position: relative;
+	line-height: 70px;
+
+	&:before, &:after {
+		width: 36px;
+		height: 100%;
+		border-right: 2px solid #f1eff4;
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: "";
+	}
+
+	&:after {
+		margin: -27px 0 0;
+		height: 50px;
+		top: 50%;
+		content: "!";
+		color: #9ca8c7;
+		font: 48px/50px @font;
+	}
+
+	.align {
+		color: #666666;
+		font: 15px/18px @font;
+	}
+}
 
 
 
