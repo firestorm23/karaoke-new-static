@@ -453,6 +453,10 @@ blockquote {
 
 .section {
 	padding-top: 20px;
+
+	&:first-child {
+		margin-top: 0;
+	}
 }
 
 .elements_row {
@@ -626,13 +630,13 @@ blockquote {
 }
 
 .index_banner__your-day .index_banner_in {
+	padding-top: 20px;
 	padding-left: 25%;
 	position: relative;
 }
 
 .index_banner__your-day .index_banner_description {
 	max-width: 850px;
-	padding-top: 20px;
 }
 
 .index_banner__your-day .index_banner_pic {
@@ -674,8 +678,12 @@ blockquote {
 	color: #000;
 }
 
-.index_banner__upgrade .index_banner_description {
+.index_banner__upgrade .index_banner_in {
 	padding-top: 20px;
+}
+
+.index_banner__upgrade .btn_place {
+	margin: 30px 0 0;
 }
 
 .flat_banner_2 {
@@ -801,9 +809,9 @@ blockquote {
 }
 
 .index_banner__home-complex .index_banner_pic_bg.index_banner_pic_bg {
-	position: absolute;
-	bottom: 0;
-	top: auto;
+//	position: absolute;
+//	bottom: 0;
+//	top: auto;
 }
 
 .index_banner__home-complex .index_banner_pic_fg.index_banner_pic_fg {
@@ -1420,6 +1428,7 @@ CATALOG LAYOUT
 }
 
 .catalog_list .dashed_list {
+	margin-top: 10px;
 	font-size: 12px;
 }
 
@@ -2956,18 +2965,19 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 	}
 
 	.flat_banner_2 .index_banner_pic img {
-		max-width: 31%;
-		left: 1%;
+//		max-width: 31%;
+//		left: 1%;
 	}
 
 	.flat_banner_2 .index_banner_pic_fg.index_banner_pic_fg {
+		bottom: 10%;
 		left: 50px;
 	}
 
 	.flat_banner_2 .index_banner_pic_bg.index_banner_pic_bg {
-		left: auto;
+		/*left: auto;
 		right: 68%;
-		max-width: 40%;
+		max-width: 40%;*/
 	}
 
 	.index_banner__home-complex .index_banner_description {
@@ -3036,11 +3046,13 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 
 	.flat_banner .index_banner_pic {
 		width: 70px;
+		margin: 0 15px 30px 0;
+		float: left;
+		position: static;
 		text-align: center;
 	}
 
 	.flat_banner .index_banner_pic img {
-		position: static;
 	}
 
 	.use_case_complect .use_case_h, .use_case_h {
@@ -3345,8 +3357,8 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 
 	.index_banner__your-day .h1 {
 		font-size: 36px;
-		max-width: 250px;
-		padding-left: 72px;
+		/*max-width: 250px;
+		padding-left: 72px;*/
 		line-height: 1;
 	}
 
@@ -3448,8 +3460,8 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 	}
 
 	.flat_banner_2 .index_banner_pic img {
-		max-width: 100%;
-		margin-top: 20px;
+//		max-width: 100%;
+//		margin-top: 20px;
 	}
 
 	.index_banner__home-complex .index_banner_pic_fg {

@@ -357,6 +357,9 @@ blockquote {
 .section {
   padding-top: 20px;
 }
+.section:first-child {
+  margin-top: 0;
+}
 .elements_row {
   display: -webkit-flex;
   display: -moz-flex;
@@ -490,12 +493,12 @@ blockquote {
   color: #000;
 }
 .index_banner__your-day .index_banner_in {
+  padding-top: 20px;
   padding-left: 25%;
   position: relative;
 }
 .index_banner__your-day .index_banner_description {
   max-width: 850px;
-  padding-top: 20px;
 }
 .index_banner__your-day .index_banner_pic {
   position: absolute;
@@ -528,8 +531,11 @@ blockquote {
   text-transform: none;
   color: #000;
 }
-.index_banner__upgrade .index_banner_description {
+.index_banner__upgrade .index_banner_in {
   padding-top: 20px;
+}
+.index_banner__upgrade .btn_place {
+  margin: 30px 0 0;
 }
 .flat_banner_2 {
   margin-bottom: 50px;
@@ -624,11 +630,6 @@ blockquote {
   top: 5px;
   font-size: 24px;
   content: '*';
-}
-.index_banner__home-complex .index_banner_pic_bg.index_banner_pic_bg {
-  position: absolute;
-  bottom: 0;
-  top: auto;
 }
 .index_banner__home-complex .index_banner_pic_fg.index_banner_pic_fg {
   position: absolute;
@@ -1115,6 +1116,7 @@ CATALOG LAYOUT
   line-height: 1em;
 }
 .catalog_list .dashed_list {
+  margin-top: 10px;
   font-size: 12px;
 }
 /*
@@ -2352,17 +2354,14 @@ HELPER CLASSES: EXTRA PADDINGS AND MARGINS
   .flat_banner_2 .index_banner_in {
     padding-left: 33%;
   }
-  .flat_banner_2 .index_banner_pic img {
-    max-width: 31%;
-    left: 1%;
-  }
   .flat_banner_2 .index_banner_pic_fg.index_banner_pic_fg {
+    bottom: 10%;
     left: 50px;
   }
   .flat_banner_2 .index_banner_pic_bg.index_banner_pic_bg {
-    left: auto;
-    right: 68%;
-    max-width: 40%;
+    /*left: auto;
+		right: 68%;
+		max-width: 40%;*/
   }
   .index_banner__home-complex .index_banner_description {
     padding-top: 0px;
@@ -2412,10 +2411,10 @@ HELPER CLASSES: EXTRA PADDINGS AND MARGINS
   }
   .flat_banner .index_banner_pic {
     width: 70px;
-    text-align: center;
-  }
-  .flat_banner .index_banner_pic img {
+    margin: 0 15px 30px 0;
+    float: left;
     position: static;
+    text-align: center;
   }
   .use_case_complect .use_case_h,
   .use_case_h {
@@ -2673,8 +2672,8 @@ HELPER CLASSES: EXTRA PADDINGS AND MARGINS
   }
   .index_banner__your-day .h1 {
     font-size: 36px;
-    max-width: 250px;
-    padding-left: 72px;
+    /*max-width: 250px;
+		padding-left: 72px;*/
     line-height: 1;
   }
   .index_banner__your-day .index_banner_pic img {
@@ -2758,10 +2757,6 @@ HELPER CLASSES: EXTRA PADDINGS AND MARGINS
   }
   .aside_img_complect {
     left: -10%;
-  }
-  .flat_banner_2 .index_banner_pic img {
-    max-width: 100%;
-    margin-top: 20px;
   }
   .index_banner__home-complex .index_banner_pic_fg {
     display: none;

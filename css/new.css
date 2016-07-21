@@ -773,6 +773,10 @@ sup {
 .button-more .fa {
   margin: 0 0 0 5px;
 }
+.section-portfolio + .section {
+  margin-top: 0;
+  padding-top: 0;
+}
 .ideas-section {
   margin: 50px 0 30px;
 }
